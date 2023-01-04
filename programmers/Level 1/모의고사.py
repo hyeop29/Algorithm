@@ -4,9 +4,7 @@ def solution(answers) :
     person = []
     for i in range(len(answers)) :
         for j in range(len(answer_list)) :
-            if len(answers) > len(answer_list[j]) :
-                answer_list[j] = answer_list[j] * (len(answers) // len(answer_list[j]) + 1)
-            if answers[i] == answer_list[j][i] :
+            if answers[i] == answer_list[j][i % len(answer_list[j])] :
                 answer[j] += 1
 
     for i in range(len(answer)) :
