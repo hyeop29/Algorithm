@@ -8,3 +8,14 @@ for i in range(N) :
       result = min(data)
 
 print(result)
+
+
+
+# 숫자 카드 게임
+N, M = map(int,input().split())
+data = []
+
+for _ in range(N) :
+  data.append(min(list(map(int, input().split()))))
+  
+print(max(data))
