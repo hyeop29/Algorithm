@@ -19,3 +19,22 @@ while count < M :
   count += 1
 
 print(result)
+
+
+
+# 다시 풀었을 때
+# 큰 수의 법칙
+N, M, K = map(int,(input().split()))
+data = list(map(int,(input().split())))
+data.sort(reverse=True)
+result, count = 0, 0
+
+for _ in range(M) :
+  if count == K :
+    result += data[1] 
+    count = 0
+  else :
+    result += data[0]
+    count += 1
+
+print(result)
