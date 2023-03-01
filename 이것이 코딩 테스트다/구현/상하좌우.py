@@ -27,3 +27,23 @@ for i in Data :
 
 # 리스트의 내용을 대괄호 없이 출력, * : 리스트 압축 해제
 print(*result)
+
+
+
+
+# 상하좌우
+N = int(input())
+plan = list((input().split()))
+
+result = [1, 1]
+move = {"L" : [0, -1], "R" : [0, 1], "U" : [-1, 0], "D" : [1, 0]}
+
+for i in plan :
+  
+  if(result[0] + move[i][0] < 1 or result[0] + move[i][0] > N or result[1] + move[i][1] < 1 or result[1] + move[i][1] > N) :
+    continue
+  else :
+    result[0] += move[i][0]
+    result[1] += move[i][1]
+
+print(result[0], result[1])
