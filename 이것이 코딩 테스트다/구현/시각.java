@@ -1,4 +1,3 @@
-package ch04;
 import java.util.*;
 
 public class Num2 {
