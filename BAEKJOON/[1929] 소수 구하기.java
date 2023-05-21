@@ -1,6 +1,6 @@
 import java.io.*;
 import java.util.*;
-public class 소수구하기 {
+public class Main {
 	public static void main(String args[]) throws IOException {
 		BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
 		StringTokenizer st = new StringTokenizer(bf.readLine());
@@ -11,7 +11,7 @@ public class 소수구하기 {
 		int pn[] = new int[m + 1];
 		Arrays.fill(pn, 1);
 		pn[1] = 0;
-		for(int i = 2; i < m + 1; i++) {
+		for(int i = 2; i < Math.sqrt(m + 1); i++) {
 			if (pn[i] == 0) {
 				continue;
 			}
