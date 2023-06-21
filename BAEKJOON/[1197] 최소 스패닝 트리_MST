@@ -1,0 +1,67 @@
+import java.io.*;
+import java.util.*;
+
+class Edge implements Comparable<Edge> {
+    int a;
+    int b;
+    int c; // c는 가중치
+
+    public Edge(int a, int b, int c){
+        this.a = a;
+        this.b = b;
+        this.c = c;
+    }
+
+    @Override
+    public int compareTo(Edge o) {
+        return this.c  - o.c;
+    }
+}
+
+public class Main {
+    static int set[];
+    public static void main (String[] args) throws IOException {
+        BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
+        StringTokenizer st = new StringTokenizer(bf.readLine());
+        int v = Integer.parseInt(st.nextToken());
+        int e = Integer.parseInt(st.nextToken());
+
+        PriorityQueue<Edge> pq = new PriorityQueue<>();
+        for(int i = 1; i < e + 1; i++) {
+            st = new StringTokenizer(bf.readLine());
+            pq.add(new Edge(Integer.parseInt(st.nextToken()), Integer.parseInt(st.nextToken()),Integer.parseInt(st.nextToken())));
+        }
+
+        int count = 0;
+        long answer = 0;
+        set = new int[v + 1];
+        for(int i = 1; i < v + 1; i++){
+            set[i] = i;
+        }
+        while(count < v - 1){
+            Edge now = pq.poll();
+            int represent_A = find(now.a);
+            int represent_B = find(now.b);
+
+            if(represent_A != represent_B){
+                if(represent_A < represent_B){
+                    set[represent_B] = represent_A;
+                }
+                else{
+                    set[represent_A] = represent_B;
+                }
+                count++;
+                answer += now.c;
+            }
+        }
+        System.out.println(answer);
+    }
+    public static int find(int vertex){
+        if(vertex == set[vertex]){
+            return vertex;
+        }
+        else{
+            return set[vertex] = find(set[vertex]);
+        }
+    }
+}
